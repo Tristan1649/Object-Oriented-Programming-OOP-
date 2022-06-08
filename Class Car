@@ -1,0 +1,33 @@
+class People:
+    def __init__(self, name, age, weight):
+        self.name = name
+        self.age = age
+        self.weight = weight
+
+    def __str__(self):
+        return self.name
+
+friend_1 = People('Vasya', 25, 75) 
+friend_2 = People('Kolya', 26, 70)
+friend_3 = People('Tanya', 27,58)
+friend_4 = People('Lena', 22,61)
+friend_5 = People('Larisa', 24, 55)
+friend_6 = People('Oleg', 26, 82)
+friend_7 = People('Ira', 31, 56)
+
+class Car:
+    def __init__(self, title, capacity, list_people):
+        self.title = title
+        self.capacity = capacity
+        self.list_people = list_people
+
+    def get_capacity(self):
+        total_capacity = 0
+        for i in self.list_people:
+            total_capacity += i.weight
+
+        return self.capacity - total_capacity
+        
+car_odissey = Car('Odissey', 501, [friend_1, friend_2, friend_3, friend_4, friend_5, friend_6, friend_7])
+print(car_odissey.capacity)
+print(car_odissey.get_capacity())
