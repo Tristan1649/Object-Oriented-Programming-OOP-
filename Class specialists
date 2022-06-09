@@ -1,0 +1,26 @@
+class Person:
+    def eat(self):
+        print('I am welding')
+    
+    def sleep(self):
+        print('I sleep')
+    
+class Doctor(Person):
+    def heal(self):
+        print("I am healing")
+
+class Nurse(Doctor):
+    def heal(self):
+        print('i am healing')
+        
+class Welder(Person):
+    def welding(self):
+        print('I am welding')
+        
+d = Doctor()
+w = Welder()
+n = Nurse()
+
+
+d.sleep()
+w.sleep()
