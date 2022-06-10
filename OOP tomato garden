@@ -1,0 +1,87 @@
+class Tomato:
+    states = {
+        1: 'Отсутствует',
+        2: 'Цветение',
+        3:  'Зеленый',
+        4:  'Красный'
+        }
+    def __init__(self):
+        self._index = 1
+        self._state = self.states[self._index]
+
+    def grow(self):
+        self._index += 1
+        self._state = self.states[self._index]
+        print(f'Томат перешел на стадию {self._state}')
+
+    def info(self):
+        return f'Томат на стадии {self._state}'
+    
+    def is_ripe(self):
+        if self._index == 4:
+            print(f'Томат Поспел')
+            return True
+        return False
+    def str(self) -> str:
+        return 'Томат'
+
+class TomatoBush:
+    def __init__(self, number_tomato):
+        self.number_tomato = number_tomato
+        self.tomatoes = []
+        for i in range(self.number_tomato):
+            self.tomatoes.append(Tomato())
+    
+    def grow_all(self):
+        for i in self.tomatoes:
+            i.grow()
+
+    def all_are_ripe(self):
+        s = []
+        for i in self.tomatoes:
+            s.append(i.is_ripe())
+        return all(s)
+
+    def give_away_all(self):
+        s = len(self.tomatoes)
+        self.tomatoes = []
+        print('Уражай собран')
+        return s
+
+
+class Gardener:
+    def __init__(self, name, plant: list):
+        self.name = name
+        self._plant = plant
+
+    def work(self):
+        print('Работать')
+        for i in self._plant:
+            i.grow_all()
+    
+    def harvest(self):
+        s = []
+        for i in self._plant:
+            s.append(i.all_are_ripe())
+        
+        if all(s):
+            count = 0
+            for i in self._plant:
+                count += i.give_away_all()
+            return f'Содовник собрал уражай {count} помидоров'
+        else:
+            return "Уражай еще не поспел"        
+
+
+
+
+a1 = TomatoBush(10)
+a2 = TomatoBush(5)
+a3 = TomatoBush(7)
+a4 = TomatoBush(8)
+
+g = Gardener('Актан', [a1, a2, a3, a4])
+g.work()
+g.work()
+g.work()
+print(g.harvest())
