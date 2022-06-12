@@ -1,0 +1,24 @@
+class Wolf:
+    def voice(self):
+        return 'Woooo!'
+
+class Lion:
+    def voice(self):
+        return 'Rrrrr'
+
+class Monkey:
+    def voice(self):
+        return 'A-a-Oo-oo!'
+        
+class Cow:
+  def voice(self):
+        return 'Moo!'
+
+w = Wolf()
+li = Lion()
+monk = Monkey()
+cw = Cow()
+s = [w, li, monk, cw]
+
+for i in s:
+    print(i.voice())
